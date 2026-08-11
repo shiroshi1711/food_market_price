@@ -23,4 +23,6 @@ def  clean_data(data):
                 "price": region["harga"]
             })
 
-    return pd.DataFrame(rows)
+        df = pd.DataFrame(rows)
+        df['date'] = pd.to_datetime(df["date"]).dt.date
+    return df
