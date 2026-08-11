@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build Docker image
         run: docker build -t foodprices_pipeline .
@@ -19,6 +19,7 @@ jobs:
       - name: Run pipeline container
         run: |
           docker run --rm \
+            -e API_URL=${{ secrets.API_URL }} \
             -e DB_HOST=${{ secrets.DB_HOST }} \
             -e DB_PORT=${{ secrets.DB_PORT }} \
             -e DB_NAME=${{ secrets.DB_NAME }} \
