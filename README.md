@@ -31,6 +31,7 @@ foodprices/
 ├── transform.py
 ├── database.py
 ├── config.py
+├── test_pipeline.py
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
