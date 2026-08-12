@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
+      - name: Run tests
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+          pytest test_pipeline.py
+          
       - name: Build Docker image
         run: docker build -t foodprices_pipeline .
 
