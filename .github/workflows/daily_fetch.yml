@@ -13,16 +13,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Debug check API_URL
-        env:
-          API_URL: ${{ secrets.API_URL }}
-        run: |
-          if [ -z "$API_URL" ]; then
-            echo "API_URL is EMPTY or MISSING"
-          else
-            echo "API_URL exists, length is: ${#API_URL}"
-          fi
-          
       - name: Run tests
         env:
           API_URL: ${{ secrets.API_URL }}
