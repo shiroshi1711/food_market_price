@@ -21,6 +21,10 @@ engine = create_engine(DATABASE_URL)
 
 def save_to_database(dataframe, table_name):
 
+    if dataframe.empty:
+        print(f"No data to insert into {table_name} (all rows filtered out).")
+        return
+    
     records = dataframe.to_dict(orient="records")
 
     query = text(f"""
