@@ -25,5 +25,5 @@ def  clean_data(data):
 
     df = pd.DataFrame(rows)
     df['date'] = pd.to_datetime(df["date"]).dt.date
-    df = df[df['price'] != 0]
+    df = df[df['price'] != 0].reset_index(drop=True)
     return df
