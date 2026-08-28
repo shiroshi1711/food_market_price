@@ -33,11 +33,6 @@ def save_to_database(dataframe, table_name):
         VALUES
         (:variant_id, :variant_name, :unit, :date, :region, :price)
 
-        ON CONFLICT (variant_id, date, region)
-        DO UPDATE SET
-            variant_name = EXCLUDED.variant_name,
-            unit = EXCLUDED.unit,
-            price = EXCLUDED.price;
     """)
 
     with engine.begin() as connection:
