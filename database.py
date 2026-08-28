@@ -16,7 +16,13 @@ DATABASE_URL = (
     f"{DB_NAME}"
 )
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={
+        "prepare_threshold": None
+    }
+)
+
 
 
 def save_to_database(dataframe, table_name):
