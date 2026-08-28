@@ -24,22 +24,15 @@ engine = create_engine(
 )
 
 
-
 def save_to_database(dataframe, table_name):
 
     if dataframe.empty:
         print(f"No data to insert into {table_name} (all rows filtered out).")
         return
     
-    records = dataframe.to_dict(orient="records")
+    dataframe.to_sql(name= table_name,
+                     con=engine,
+                     if_exists='append',
+                     index=False)
 
-    query = text(f"""
-        INSERT INTO {table_name}
-        (variant_id, variant_name, unit, date, region, price)
-        VALUES
-        (:variant_id, :variant_name, :unit, :date, :region, :price)
-
-    """)
-
-    with engine.begin() as connection:
-        connection.execute(query, records)
+    print(f'Saved {len(dataframe)} rows into {table_name}!')

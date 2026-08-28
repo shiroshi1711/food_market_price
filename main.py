@@ -7,8 +7,6 @@ def main():
     df = clean_data(data)
     save_to_database(df, 'food_prices')
 
-    print(f"Saved {len(df)} rows")
-
     
 if __name__ == "__main__":
     main()
